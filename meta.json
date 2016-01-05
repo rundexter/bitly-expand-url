@@ -2,25 +2,38 @@
  * Metadata describing the module operation
  */
 {
-    //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "shortUrl",
+            "title": "Bitlink"
+        },
+        {
+            "id": "hash",
+            "title": "Hash"
         }
-        */
     ],
-    //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "short_url",
+            "title": "Bitlink"
+        },
+        {
+            "id": "hash",
+            "title": "Hash"
+        },
+        {
+            "id": "user_hash",
+            "title": "User ID"
+        },
+        {
+            "id": "global_hash",
+            "title": "Bitly ID"
+        },
+        {
+            "id": "long_url",
+            "title": "Expanded URL"
         }
-      */
     ],
-    "title": "Bitly: Expand URL" /* Required.A display name for the module */
+    "icon": "dex-bitly",
+    "title": "Bitly: Expand URL"
 }
