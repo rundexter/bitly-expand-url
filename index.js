@@ -34,10 +34,8 @@ module.exports = {
 
         inputs.access_token = token;
         request.get({uri: api, qs: inputs, json: true}, function (error, response, body) {
-            if (error)
-                this.fail(error);
-            else if (body && body.status_code !== 200)
-                this.fail(body);
+            if (error || (body && body.status_code !== 200))
+                this.fail(error || body);
             else
                 this.complete(util.pickOutputs(body, pickOutputs));
         }.bind(this));
