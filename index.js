@@ -8,11 +8,11 @@ var pickInputs = {
         'hash': 'hash'
     },
     pickOutputs = {
-        'short_url': { keyName: 'data.expand', fields: ['short_url'] },
-        'hash': { keyName: 'data.expand', fields: ['hash'] },
-        'user_hash': { keyName: 'data.expand', fields: ['user_hash'] },
-        'global_hash': { keyName: 'data.expand', fields: ['global_hash'] },
-        'long_url': { keyName: 'data.expand', fields: ['long_url'] }
+        'short_url': { key: 'data.expand', fields: ['short_url'] },
+        'hash': { key: 'data.expand', fields: ['hash'] },
+        'user_hash': { key: 'data.expand', fields: ['user_hash'] },
+        'global_hash': { key: 'data.expand', fields: ['global_hash'] },
+        'long_url': { key: 'data.expand', fields: ['long_url'] }
     };
 
 module.exports = {
@@ -26,11 +26,8 @@ module.exports = {
     run: function(step, dexter) {
         var inputs = util.pickInputs(step, pickInputs),
             validateErrors = util.checkValidateErrors(inputs, pickInputs),
-            token = dexter.environment('bitly_access_token'),
+            token = dexter.provider('bitly').credentials('access_token'),
             api = '/v3/expand';
-
-        if (!token)
-            return this.fail('A [bitly_access_token] environment variable is required for this module');
 
         if (validateErrors)
             return this.fail(validateErrors);
